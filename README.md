@@ -69,29 +69,13 @@ The following types of questions were removed from the set:
 *   those requiring longer explanations (“_Jakie pokrewieństwo łączyło reżysera Jana Łomnickiego i aktora Tadeusza?_")
 
 
-# Development data
+# Development and test data
+Development and test data are provided as UTF-8-encoded text files: in.tsv contains questions, while expected.tsv contains tab-separated answers (in cases in which more than one answer variant is provided).
 
-...
-
-
-# Test data
-Test data are provided as a single UTF-8-encoded tab-separated plain text file in which each line consists of at least three tab-separated columns:
-
-1. Question ID
-2. Question text
-3. Answer text 1
-4. Answer text 2
-5. ...
-
-Each question can have a set of equivalent answers, starting in column 3.
-
+The data has been published in the following repository: https://github.com/poleval/2021-question-answering
 
 # Submission format
-Submission file should contains just two tab-separated columns:
-
-1. Question ID
-2. Answer text
-
+The submission file should contain just the answers in seprate lines.
 
 # Evaluation
 The task will be evaluated by comparing the known answer (gold standard) to the one provided by the participating systems (predictions). Specifically, we will compute **accuracy** as the number of matching answers divided by the number of questions in the test set.
@@ -101,13 +85,24 @@ Checking if the two answers match will depend on the question type:
 1. For non-numerical questions, we will assess textual similarity. To that end, a Levenshtein distance[^1] will be computed between the two (lowercased) strings and if it is less than ½ of the length of the gold standard answer, we accept the candidate answer.
 
 2. For numerical questions (e.g. _In which year…_), we will assess numerical similarity. Specifically, we will use a regular expression to extract a sequence of characters that could be interpreted as a number[^2]. If such sequences can be found in both answers and represent the same number, we accept the prediction.
+
 For some questions, more than one answer text is available, e.g. _Richard I_, _Richard Cœur de Lion_ and _Richard the Lionheart_. In such cases the answer that has the best match with the candidate will be used.
 
 
 # Baseline
+The WIKI_SEARCH baseline solution uses the question as a query to Wikipedia search service and returns the title of the first returned article as an answer, as long as it doesn’t overlap with the question.
 
-TBC
+Specifically, the following procedure is used:
 
+1. Split the question into tokens using spaCy (model pl_core_news_sm) and ignore the one-character tokens,
+1. Send the space-separated tokens as a query to the Search API of the Polish Wikipedia,
+1. For each of the returned articles:
+   1. Split its title into tokens with spaCy,
+   1. If none of the tokens of the title has at least 50% overlap (measured as in Evaluation) with any of the tokens of the question:
+      1. remove the part of the title starting from ‘(‘, if found
+      1. return the title as an answer,
+   1. Otherwise, continue to the next result,
+1. If no answer is found at this point, remove the first of the question tokens and jump back to (2).
 
 ## Notes
 
