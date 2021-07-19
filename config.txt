@@ -1,1 +1,1 @@
---metric MAP --precision 4 --show-as-percentage  --in-header in-header.tsv
+--metric LenientHarden/ExtractNumber/Lower/Fuzzy/Accuracy:N<Acc> --precision 4 --show-as-percentage  --in-header in-header.tsv
