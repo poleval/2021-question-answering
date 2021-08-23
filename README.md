@@ -104,6 +104,10 @@ Specifically, the following procedure is used:
    1. Otherwise, continue to the next result,
 1. If no answer is found at this point, remove the first of the question tokens and jump back to (2).
 
+# Video introduction
+
+[![Video instruction](http://img.youtube.com/vi/Uau1x-oFyuM/0.jpg)](http://www.youtube.com/watch?v=Uau1x-oFyuM "Video instruction")
+
 ## Notes
 
 [^1]:
