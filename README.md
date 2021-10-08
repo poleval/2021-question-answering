@@ -108,6 +108,11 @@ Specifically, the following procedure is used:
 
 [![Video instruction](http://img.youtube.com/vi/Uau1x-oFyuM/0.jpg)](http://www.youtube.com/watch?v=Uau1x-oFyuM "Video instruction")
 
+# Challenge stage
+
+The competition in September 2021. Now the challenge is in the after-competition stage. You can submit solutions,
+but they will be marked with a different color.
+
 ## Notes
 
 [^1]:
