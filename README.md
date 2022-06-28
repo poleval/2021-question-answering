@@ -113,6 +113,10 @@ Specifically, the following procedure is used:
 The competition in September 2021. Now the challenge is in the after-competition stage. You can submit solutions,
 but they will be marked with a different color.
 
+# Metadata
+
+Tags: poleval-2021, qa
+
 ## Notes
 
 [^1]:
